@@ -1,0 +1,20 @@
+PODS:
+  - PagingTableView (0.1.0)
+  - SwiftSoup (1.7.2)
+
+DEPENDENCIES:
+  - PagingTableView
+  - SwiftSoup
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PagingTableView
+    - SwiftSoup
+
+SPEC CHECKSUMS:
+  PagingTableView: ba7869ff22f7cf3f8b2190b0314688d2cb0e46c4
+  SwiftSoup: e5f61d37e3d802a4b5db81b4945de3da9bfdf115
+
+PODFILE CHECKSUM: eacdb510332b749b8802c2f9336a9ec822dcf19f
+
+COCOAPODS: 1.5.3
