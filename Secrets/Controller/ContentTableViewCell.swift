@@ -12,6 +12,7 @@ class ContentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titolo: UILabel!
     @IBOutlet weak var messaggio: UILabel!
+    @IBOutlet weak var info: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,11 +15,14 @@ class API {
     var document: Document = Document.init("")
     
     //Download HTML
-    func getSecrets(pagina:String, numero_pagina:Int) -> [Secret] {
+    func getSecrets(link:String="", numero_pagina:Int, search:Bool=false, query:String="", gender:Int=0) -> [Secret] {
         
         var secrets: [Secret] = []
 
-        let link = "https://insegreto.com/it/\(pagina)?page=\(numero_pagina)"
+        var link = "\(link)?page=\(numero_pagina)"
+        if search {
+            link = "https://insegreto.com/it/search?query=\(query)&partial=1&age_from=13&age_to=70&gender=\(gender)&page=\(numero_pagina)"
+        }
         let url = URL(string: link)
         
         do {
@@ -42,8 +45,14 @@ class API {
             
                 let info: Elements = try article.select(".secret__info > .secret__date > .secret__date--full")
                 let i = try info.text()
+                
+                let comments_url: Elements = try article.select(".secret__foot > .secret__actions-secondary > .secret__button")
+                let c = try comments_url.attr("href")
+                
+                let like_dislike: Elements = try article.select(".secret__foot > .secret__actions-primary")
+                let l = try like_dislike.text()
             
-                secrets.append(Secret(title: t, message: m, date_time: i))
+                secrets.append(Secret(title: t, message: m, date_time: i, comments_url: c, like_dislike: l))
             }
             
         } catch let error {

@@ -19,17 +19,17 @@ class HomeViewController:  UIViewController, UITableViewDataSource, PagingTableV
     var uominiSecrets: [Secret] = []
     var donneSecrets: [Secret] = []
     var numero_pagina = 1
-    var pagina:String = ""
+    
+    var url:String = "https://insegreto.com/it"
     var category:String = "Popolari"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        secrets = api.getSecrets(pagina: pagina, numero_pagina: numero_pagina)
+        secrets = api.getSecrets(link: url, numero_pagina: numero_pagina)
         
         contentTable.dataSource = self
         contentTable.pagingDelegate = self
-        
         contentTable.estimatedRowHeight = 44.0
         contentTable.rowHeight = UITableView.automaticDimension
         
@@ -66,44 +66,14 @@ class HomeViewController:  UIViewController, UITableViewDataSource, PagingTableV
             data = secrets
         }
         
-        cell?.titolo.text = data[indexPath.row].title
-        cell?.messaggio.text = data[indexPath.row].message
+        let s = data[indexPath.row]
+        cell?.titolo.text = s.title
+        cell?.messaggio.text = s.message
+        cell?.info.text = "\(s.like) Like - \(s.dislike) dislike • \(s.date_time)"
         
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
-    {
-        // 1
-        let shareAction = UITableViewRowAction(style: UITableViewRowAction.Style.default, title: "Share" , handler: { (action:UITableViewRowAction, indexPath: IndexPath) -> Void in
-            // 2
-            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .actionSheet)
-            
-            let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertAction.Style.default, handler: nil)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
-            
-            shareMenu.addAction(twitterAction)
-            shareMenu.addAction(cancelAction)
-            
-            self.present(shareMenu, animated: true, completion: nil)
-        })
-        // 3
-        let rateAction = UITableViewRowAction(style: UITableViewRowAction.Style.default, title: "Rate" , handler: { (action:UITableViewRowAction, indexPath:IndexPath) -> Void in
-            // 4
-            let rateMenu = UIAlertController(title: nil, message: "Rate this App", preferredStyle: .actionSheet)
-            
-            let appRateAction = UIAlertAction(title: "Rate", style: UIAlertAction.Style.default, handler: nil)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
-            
-            rateMenu.addAction(appRateAction)
-            rateMenu.addAction(cancelAction)
-            
-            self.present(rateMenu, animated: true, completion: nil)
-        })
-        // 5
-        return [shareAction,rateAction]
-    }
-
     func paginate(_ tableView: PagingTableView, to page: Int) {
         contentTable.isLoading = true
         
@@ -111,11 +81,11 @@ class HomeViewController:  UIViewController, UITableViewDataSource, PagingTableV
         
         switch mySegment.selectedSegmentIndex {
         case 1:
-            uominiSecrets += api.getSecrets(pagina: pagina, numero_pagina: numero_pagina).filter { $0.sesso == "Uomo" }
+            uominiSecrets += api.getSecrets(link: url, numero_pagina: numero_pagina).filter { $0.sesso == "Uomo" }
         case 2:
-            donneSecrets += api.getSecrets(pagina: pagina, numero_pagina: numero_pagina).filter { $0.sesso == "Donna" }
+            donneSecrets += api.getSecrets(link: url, numero_pagina: numero_pagina).filter { $0.sesso == "Donna" }
         default:
-            secrets += api.getSecrets(pagina: pagina, numero_pagina: numero_pagina)
+            secrets += api.getSecrets(link: url, numero_pagina: numero_pagina)
         }
         
         contentTable.isLoading = false

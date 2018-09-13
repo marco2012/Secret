@@ -17,6 +17,7 @@
 		A97FF6322139BA0400544CCD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97FF6312139BA0400544CCD /* API.swift */; };
 		A97FF6342139BAC700544CCD /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97FF6332139BAC700544CCD /* Secret.swift */; };
 		A97FF6382139C3EA00544CCD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97FF6372139C3EA00544CCD /* HomeViewController.swift */; };
+		A9A46A61213ABCB100262CE0 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A46A60213ABCB100262CE0 /* SearchTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		A97FF6312139BA0400544CCD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A97FF6332139BAC700544CCD /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		A97FF6372139C3EA00544CCD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A9A46A60213ABCB100262CE0 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		AF4F8B39AEB24AC8F7F83040 /* Pods-Secrets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Secrets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Secrets/Pods-Secrets.debug.xcconfig"; sourceTree = "<group>"; };
 		B46D30084407FE9DB6AC0DB8 /* Pods-Secrets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Secrets.release.xcconfig"; path = "Pods/Target Support Files/Pods-Secrets/Pods-Secrets.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,8 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				A97FF6372139C3EA00544CCD /* HomeViewController.swift */,
-				A96B510A2139D074007F3C82 /* ContentTableViewCell.swift */,
 				A979BE332139EBB9005DF0DD /* CategoriesTableViewController.swift */,
+				A9A46A60213ABCB100262CE0 /* SearchTableViewController.swift */,
+				A96B510A2139D074007F3C82 /* ContentTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -90,14 +93,30 @@
 			children = (
 				A97FF61D2139B6D200544CCD /* AppDelegate.swift */,
 				A979BE322139EBA6005DF0DD /* Controller */,
-				A97FF6312139BA0400544CCD /* API.swift */,
-				A97FF6332139BAC700544CCD /* Secret.swift */,
-				A97FF6232139B6D200544CCD /* Main.storyboard */,
+				A9A46A5E213AB95200262CE0 /* Model */,
+				A9A46A5F213AB96000262CE0 /* View */,
 				A97FF6262139B6D400544CCD /* Assets.xcassets */,
-				A97FF6282139B6D400544CCD /* LaunchScreen.storyboard */,
 				A97FF62B2139B6D400544CCD /* Info.plist */,
 			);
 			path = Secrets;
+			sourceTree = "<group>";
+		};
+		A9A46A5E213AB95200262CE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A97FF6312139BA0400544CCD /* API.swift */,
+				A97FF6332139BAC700544CCD /* Secret.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A9A46A5F213AB96000262CE0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A97FF6232139B6D200544CCD /* Main.storyboard */,
+				A97FF6282139B6D400544CCD /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E351EBD6CB427EDA89E3A895 /* Frameworks */ = {
@@ -225,6 +244,7 @@
 				A97FF6342139BAC700544CCD /* Secret.swift in Sources */,
 				A97FF61E2139B6D200544CCD /* AppDelegate.swift in Sources */,
 				A97FF6322139BA0400544CCD /* API.swift in Sources */,
+				A9A46A61213ABCB100262CE0 /* SearchTableViewController.swift in Sources */,
 				A97FF6382139C3EA00544CCD /* HomeViewController.swift in Sources */,
 				A96B510B2139D074007F3C82 /* ContentTableViewCell.swift in Sources */,
 				A979BE342139EBB9005DF0DD /* CategoriesTableViewController.swift in Sources */,

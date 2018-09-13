@@ -20,8 +20,14 @@ class CategoriesTableViewController: UITableViewController {
         "Tenerà età",
         "Imbarazzanti",
         "Sfoghi",
-        "NSFW"
-    ]
+        "NSFW",
+        "Sesso",
+        "Amore",
+        "Ragazze",
+        "Paura",
+        "Random",
+        "Classifica"
+    ].sorted()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +37,10 @@ class CategoriesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return categories.count
     }
 
@@ -53,7 +57,7 @@ class CategoriesTableViewController: UITableViewController {
             let cell = sender as! UITableViewCell
             let indexPaths = self.tableView.indexPath(for: cell)
             let thisCategory = self.categories[indexPaths!.row]
-            homeVC.pagina = getUrl(cat: thisCategory)
+            homeVC.url = getUrl(cat: thisCategory)
             homeVC.category = thisCategory
         }
     }
@@ -61,25 +65,37 @@ class CategoriesTableViewController: UITableViewController {
     private func getUrl(cat:String) -> String{
         switch cat {
         case "Nuovi":
-            return "fresh"
+            return "https://insegreto.com/it/fresh"
         case "Divertenti":
-            return "funny"
+            return "https://insegreto.com/it/funny"
         case "VDM":
-            return "fml"
+            return "https://insegreto.com/it/fml"
         case "ASK":
-            return "ask"
+            return "https://insegreto.com/it/ask"
         case "Amore, Amicizie":
-            return "love"
+            return "https://insegreto.com/it/love"
         case "Figuracce":
-            return "fails"
+            return "https://insegreto.com/it/fails"
         case "Tenerà età":
-            return "tender-age"
+            return "https://insegreto.com/it/tender-age"
         case "Imbarazzanti":
-            return "embarassing"
+            return "https://insegreto.com/it/embarassing"
         case "Sfoghi":
-            return "outburst"
+            return "https://insegreto.com/it/outburst"
         case "NSFW":
-            return "nsfw"
+            return "https://insegreto.com/it/nsfw"
+        case "Sesso":
+            return "https://insegreto.com/it/tags/secrets/sesso"
+        case "Amore":
+            return "https://insegreto.com/it/tags/secrets/amore"
+        case "Ragazze":
+            return "https://insegreto.com/it/tags/secrets/ragazze"
+        case "Paura":
+            return "https://insegreto.com/it/tags/secrets/paura"
+        case "Random":
+            return "https://insegreto.com/it/random"
+        case "Classifica":
+            return "https://insegreto.com/it/rankings/secrets"
         default:
             return ""
         }
