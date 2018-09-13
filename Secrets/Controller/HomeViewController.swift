@@ -22,6 +22,9 @@ class HomeViewController:  UIViewController, UITableViewDataSource, PagingTableV
     
     var url:String = "https://insegreto.com/it"
     var category:String = "Popolari"
+    let cellSpacingHeight: CGFloat = 5
+    let maleBackgroundColor = UIColor(red:0.93, green:0.95, blue:0.97, alpha:1.0)
+    let femaleBackgroundColor = UIColor(red:0.97, green:0.94, blue:0.99, alpha:1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +73,20 @@ class HomeViewController:  UIViewController, UITableViewDataSource, PagingTableV
         cell?.titolo.text = s.title
         cell?.messaggio.text = s.message
         cell?.info.text = "\(s.like) Like - \(s.dislike) dislike • \(s.date_time)"
+        
+        let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8,
+                                                             width: self.view.frame.size.width - 20,
+                                                             height: self.view.frame.size.height - 20))
+        print(s.sesso)
+        if s.sesso == "Donna" {
+            whiteRoundedView.layer.backgroundColor = femaleBackgroundColor.cgColor
+        } else {
+            whiteRoundedView.layer.backgroundColor = maleBackgroundColor.cgColor
+        }
+        whiteRoundedView.layer.masksToBounds = true
+        whiteRoundedView.layer.cornerRadius = 8.0
+        cell?.contentView.addSubview(whiteRoundedView)
+        cell?.contentView.sendSubviewToBack(whiteRoundedView)
         
         return cell!
     }
